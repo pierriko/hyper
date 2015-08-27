@@ -9,7 +9,7 @@ macro(HYPER_NODE node)
 
 	# when building, don't use the install RPATH already
 	# (but later on when installing)
-	SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
+	SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
 	SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;${CMAKE_INSTALL_PREFIX}/lib/hyper")
 
@@ -32,14 +32,14 @@ macro(HYPER_NODE node)
 	find_package(Boost 1.42 REQUIRED COMPONENTS system thread serialization filesystem date_time)
 	set(BOOST_FOUND ${Boost_FOUND})
 	include_directories(${Boost_INCLUDE_DIRS})
-	message(STATUS "boost libraries "${Boost_LIBRARIES})
+	message(STATUS "boost libraries " ${Boost_LIBRARIES})
 
 	set(base_directory src/${node})
 
 	if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${base_directory}/CMakeLists.txt)
 		include(${CMAKE_CURRENT_SOURCE_DIR}/${base_directory}/CMakeLists.txt)
 	endif()
-	
+
 	include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 	include_directories(${HYPER_INCLUDE_DIRS})
 	include_directories(${base_directory})
